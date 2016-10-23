@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\Programming;
 use Yii;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -60,7 +62,23 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $query = Programming::find()->where(['hide' => 0]);
+        $pagination= new Pagination([
+            'defaultPageSize'=>5,
+            'totalCount' => $query->count()
+
+        ]);
+        $posts= $query->orderBy(['date' => SORT_DESC])
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+
+        return $this->render('index',[
+            'posts' => $posts,
+            'active_page' => Yii::$app->request->get("page", 1),
+            'count_pages' => $pagination -> getPageCount(),
+            'pagination' => $pagination
+        ]);
     }
         
 }
