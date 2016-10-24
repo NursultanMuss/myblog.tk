@@ -72,22 +72,9 @@ $this->registerMetaTag([
         <a href="services.html" class="arrow fright">see more services</a>
     </header>
     <?php
-        foreach ($posts as $post)
-    include_once  "intro_post.php";
+        foreach ($posts as $post){include_once  "intro_post.php";}
+
     ?>
-    
-
-    <article class="grid col-one-third mq3-col-full">
-        <aside>02</aside>
-        <h5>Web development</h5>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim.</p>
-    </article>
-
-    <article class="grid col-one-third mq3-col-full">
-        <aside>03</aside>
-        <h5>Graphic design</h5>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim.</p>
-    </article>
 </section>
 
 <section class="works grid-wrap">

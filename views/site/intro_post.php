@@ -8,14 +8,10 @@
     </aside>
     <h5><?=$post->title?></h5>
     <img class="img-responsive" src="<?=$post->img?>" alt="<?=$post->title?>">
+
+    <p class="more">
+        <a href="<?= $post->link?>">Читать полностью</a>
+        <a href="<?= Yii::$app->urlManager->createUrl(["site/releases"])?>">Другие выпуски</a>
+    </p>
    
 </article>
-
-
-<?php
-/**
- * Created by PhpStorm.
- * User: йойо
- * Date: 24.10.2016
- * Time: 16:08
- */

@@ -64,7 +64,7 @@ class SiteController extends Controller
     {
         $query = Programming::find()->where(['hide' => 0]);
         $pagination= new Pagination([
-            'defaultPageSize'=>5,
+            'defaultPageSize'=>3,
             'totalCount' => $query->count()
 
         ]);
