@@ -8,10 +8,12 @@
 namespace app\models;
 
 use yii\db\ActiveRecord;
+use Yii;
 
 class Programming extends ActiveRecord{
-    public $img;
-
+    
+    public $link;
+    public $video;
     public function afterFind() {
         $monthes = [
             1 => 'Января', 2=> 'Февраля', 3 => 'Марта', 4 => 'Апреля', 5 => 'Мая', 6 => 'Июня',
@@ -24,14 +26,13 @@ class Programming extends ActiveRecord{
 
 
         $this->link = Yii::$app->urlManager->createUrl(["site/post", "id" => $this->id]);
-        $this->img= '/web/images/programming/'.$this->img;
+        $this->img= '/web/img/programming/'.$this->img;
         $this->video = $this->youtube("{youtube:".$this->video.",480,295}");
 
     }
 
      public function replaceContent ($text) {
          $text = $this->youtube($text);
-         $text= $this-> flowplayer($text);
          return $text;
      }
 

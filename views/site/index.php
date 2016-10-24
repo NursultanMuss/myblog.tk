@@ -1,53 +1,144 @@
 <?php
+use yii\widgets\LinkPager;
 
-/* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title="Мой сайт";
+$this->registerMetaTag([
+    'name' => 'description',
+    'content' => 'Мой личный сайт'
+]);
+$this->registerMetaTag([
+    'name' => 'keywords',
+    'content' => 'Нурсултан Мусабаев, личный сайт'
+])
 ?>
-<div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+<div class="home-page main">
+        <section class="grid-wrap" >
+            <header class="grid col-full">
+                <hr>
+                <p class="fleft">Home</p>
+                <a href="about.html" class="arrow fright">see more infos</a>
+            </header>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+            <div class="grid col-one-half mq2-col-full">
+                <h1>Web design <br>
+                    Web Development <br>
+                    Graphic Design</h1>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit.
+                </p>
+                <p>Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum.
+                </p>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+            <div class="slider grid col-one-half mq2-col-full">
+                <div class="flexslider">
+                    <div class="slides">
+                        <?php //foreach(); ?>
+<div class="slide">
+    <figure>
+        <img class="img-responsive" src="img/img2.jpg" alt="">
+        <figcaption>
+            <div>
+                <h5>Caption 1</h5>
+                <p>Lorem ipsum dolor set amet, lorem, <a href="#">link text</a></p>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
+        </figcaption>
+    </figure>
 </div>
+
+<div class="slide">
+    <figure>
+        <img src="img/img.jpg" alt="">
+        <figcaption>
+            <div>
+                <h5>Caption 2</h5>
+                <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+            </div>
+        </figcaption>
+    </figure>
+</div>
+</div>
+</div>
+</div>
+
+</section>
+
+<section class="services grid-wrap">
+    <header class="grid col-full">
+        <hr>
+        <p class="fleft">Services</p>
+        <a href="services.html" class="arrow fright">see more services</a>
+    </header>
+    <?php
+        foreach ($posts as $post)
+    include_once  "intro_post.php";
+    ?>
+    
+
+    <article class="grid col-one-third mq3-col-full">
+        <aside>02</aside>
+        <h5>Web development</h5>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim.</p>
+    </article>
+
+    <article class="grid col-one-third mq3-col-full">
+        <aside>03</aside>
+        <h5>Graphic design</h5>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim.</p>
+    </article>
+</section>
+
+<section class="works grid-wrap">
+    <header class="grid col-full">
+        <hr>
+        <p class="fleft">Works</p>
+        <a href="works.html" class="arrow fright">see more works</a>
+    </header>
+
+    <figure class="grid col-one-quarter mq2-col-one-half">
+        <a href="work1.html">
+            <img src="img/img.jpg" alt="">
+            <span class="zoom"></span>
+        </a>
+        <figcaption>
+            <a href="work1.html" class="arrow">Project page!</a>
+            <p>Lorem ipsum dolor set amet</p>
+        </figcaption>
+    </figure>
+
+    <figure class="grid col-one-quarter mq2-col-one-half">
+        <a href="#">
+            <img src="img/img.jpg" alt="">
+            <span class="zoom"></span>
+        </a>
+        <figcaption>
+            <a href="#" class="arrow">Project x</a>
+            <p>Lorem ipsum dolor set amet</p>
+        </figcaption>
+    </figure>
+
+    <figure class="grid col-one-quarter mq2-col-one-half">
+        <a href="#">
+            <img src="img/img.jpg" alt="">
+            <span class="zoom"></span>
+        </a>
+        <figcaption>
+            <a href="#" class="arrow">Project x</a>
+            <p>Lorem ipsum dolor set amet</p>
+        </figcaption>
+    </figure>
+
+    <figure class="grid col-one-quarter mq2-col-one-half">
+        <a href="#">
+            <img src="img/img.jpg" alt="">
+            <span class="zoom"></span>
+        </a>
+        <figcaption>
+            <a href="#" class="arrow">Project x</a>
+            <p>Lorem ipsum dolor set amet</p>
+        </figcaption>
+    </figure>
+</section>
+</div> <!--main-->
