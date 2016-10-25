@@ -18,7 +18,7 @@ $this->registerMetaTag([
             <header class="grid col-full">
                 <hr>
                 <p class="fleft">Home</p>
-                <a href="about.html" class="arrow fright">see more infos</a>
+                <a href="<?=Yii::$app->urlManager->createUrl(['site/about'])?>" class="arrow fright">больше информации</a>
             </header>
 
             <div class="grid col-one-half mq2-col-full">
@@ -35,7 +35,6 @@ $this->registerMetaTag([
             <div class="slider grid col-one-half mq2-col-full">
                 <div class="flexslider">
                     <div class="slides">
-                        <?php //foreach(); ?>
 <div class="slide">
     <figure>
         <img class="img-responsive" src="img/img2.jpg" alt="">
@@ -68,20 +67,34 @@ $this->registerMetaTag([
 <section class="services grid-wrap">
     <header class="grid col-full">
         <hr>
-        <p class="fleft">Services</p>
-        <a href="services.html" class="arrow fright">see more services</a>
+        <p class="fleft">Статьи про программирование</p>
+        <a href="services.html" class="arrow fright">больше статей</a>
     </header>
-    <?php
-        foreach ($posts as $post){include_once  "intro_post.php";}
+    <div class="articles">
+        <?php
 
-    ?>
+        foreach ($posts as $post){include  "intro_post.php";}
+        ?>
+    </div>
+
+    <div id="programming_pages">
+        <span> Страница <?= $active_page?> из<?=$count_pages?></span>
+        <?= LinkPager::widget([
+            'pagination' => $pagination,
+            'firstPageLabel' => 'В начало',
+            'lastPageLabel' => 'В конец',
+            'prevPageLabel' => '&laquo;'
+        ]) ?>
+
+        <div class="clear"></div>
+    </div>
 </section>
 
 <section class="works grid-wrap">
     <header class="grid col-full">
         <hr>
-        <p class="fleft">Works</p>
-        <a href="works.html" class="arrow fright">see more works</a>
+        <p class="fleft">Мои работы</p>
+        <a href="works.html" class="arrow fright">больше работ</a>
     </header>
 
     <figure class="grid col-one-quarter mq2-col-one-half">

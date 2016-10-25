@@ -68,12 +68,12 @@ $action = Yii::$app->controller->action->id;
 
             <nav class="grid col-one-third ">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="works.html">Works</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="<?=Yii::$app->urlManager->createUrl(["site/index"])?>">Home</a></li>
+                    <li><a href="<?=Yii::$app->urlManager->createUrl(["site/about"])?>">Обо мне</a></li>
+                    <li><a href="<?=Yii::$app->urlManager->createUrl(["site/works"])?>">Мои работы</a></li>
+                    <li><a href="<?=Yii::$app->urlManager->createUrl(["site/programming"])?>">Статьи про программирование</a></li>
+                    <li><a href="<?=Yii::$app->urlManager->createUrl(["site/blog"])?>">Блог</a></li>
+                    <li><a href="<?=Yii::$app->urlManager->createUrl(["site/contacts"])?>">Контакты</a></li>
                 </ul>
             </nav>
         </footer>

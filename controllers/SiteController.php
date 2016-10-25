@@ -13,6 +13,7 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+
     /**
      * @inheritdoc
      */
@@ -79,6 +80,10 @@ class SiteController extends Controller
             'count_pages' => $pagination -> getPageCount(),
             'pagination' => $pagination
         ]);
+    }
+
+    public function actionAbout(){
+        return $this->render('about');
     }
         
 }
