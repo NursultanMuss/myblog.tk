@@ -85,5 +85,23 @@ class SiteController extends Controller
     public function actionAbout(){
         return $this->render('about');
     }
+    public function actionWorks(){
+        $query=Works::find()->where(['active' => 0]);
+        $pagination = new Pagination([
+            'defaultPageSize'=>6,
+            'totalCount' => $query -> count()
+        ]);
+        $works=$query->orderBy(['date' => SORT_ASC])
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        return $this->render('works',[
+            'works' => $works,
+            'active_page' => Yii::$app->request->get("page", 1),
+            'count_pages' => $pagination ->getPageCount(),
+            'pagination' => $pagination
+        ]);
+    }
+
         
 }
