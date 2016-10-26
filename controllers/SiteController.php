@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Programming;
+use app\models\Works;
 use Yii;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
@@ -86,7 +87,7 @@ class SiteController extends Controller
         return $this->render('about');
     }
     public function actionWorks(){
-        $query=Works::find()->where(['active' => 0]);
+        $query=Works::find()->where(['active' => 1]);
         $pagination = new Pagination([
             'defaultPageSize'=>6,
             'totalCount' => $query -> count()

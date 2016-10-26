@@ -8,17 +8,13 @@
 
 namespace app\models;
 
-use yii\db\ActiverRecord;
+use yii\db\ActiveRecord;
 use Yii;
 
 
 class Works extends ActiveRecord{
     public $link;
     public $video;
-
-    public $address;
-    public $description;
-    public $img;
     public $date;
     public function afterFind (){
         $monthes = [
@@ -34,6 +30,8 @@ class Works extends ActiveRecord{
             $this->img = '/web/img/works/' . $this->img . ".jpg";
         }
         $this->video=$this->youtube("{youtube:".$this->video." ,480,295}");
+
+        $this->link = Yii::$app->urlManager->createUrl(["site/work", "id" => $this->id]);
     }
 
     public function replaceContent ($text){
