@@ -77,6 +77,8 @@ $this->registerMetaTag([
         ?>
     </div>
 
+
+</section>
     <div id="programming_pages">
         <span> Страница <?= $active_page?> из<?=$count_pages?></span>
         <?= LinkPager::widget([
@@ -88,7 +90,6 @@ $this->registerMetaTag([
 
         <div class="clear"></div>
     </div>
-</section>
 
 <section class="works grid-wrap">
     <header class="grid col-full">
@@ -96,49 +97,8 @@ $this->registerMetaTag([
         <p class="fleft">Мои работы</p>
         <a href="works.html" class="arrow fright">больше работ</a>
     </header>
-
-    <figure class="grid col-one-quarter mq2-col-one-half">
-        <a href="work1.html">
-            <img src="img/img.jpg" alt="">
-            <span class="zoom"></span>
-        </a>
-        <figcaption>
-            <a href="work1.html" class="arrow">Project page!</a>
-            <p>Lorem ipsum dolor set amet</p>
-        </figcaption>
-    </figure>
-
-    <figure class="grid col-one-quarter mq2-col-one-half">
-        <a href="#">
-            <img src="img/img.jpg" alt="">
-            <span class="zoom"></span>
-        </a>
-        <figcaption>
-            <a href="#" class="arrow">Project x</a>
-            <p>Lorem ipsum dolor set amet</p>
-        </figcaption>
-    </figure>
-
-    <figure class="grid col-one-quarter mq2-col-one-half">
-        <a href="#">
-            <img src="img/img.jpg" alt="">
-            <span class="zoom"></span>
-        </a>
-        <figcaption>
-            <a href="#" class="arrow">Project x</a>
-            <p>Lorem ipsum dolor set amet</p>
-        </figcaption>
-    </figure>
-
-    <figure class="grid col-one-quarter mq2-col-one-half">
-        <a href="#">
-            <img src="img/img.jpg" alt="">
-            <span class="zoom"></span>
-        </a>
-        <figcaption>
-            <a href="#" class="arrow">Project x</a>
-            <p>Lorem ipsum dolor set amet</p>
-        </figcaption>
-    </figure>
+<div class="works">
+    <?php foreach($works as $work) {include "intro_work.php";}?>
+</div>
 </section>
 </div> <!--main-->

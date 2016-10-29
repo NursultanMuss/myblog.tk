@@ -70,13 +70,23 @@ class SiteController extends Controller
             'totalCount' => $query->count()
 
         ]);
+        $query_w=Works::find()->where(['active' => 1]);
+        $pagination_w = new Pagination([
+            'defaultPageSize'=>4,
+            'totalCount' => $query_w -> count()
+        ]);
         $posts= $query->orderBy(['date' => SORT_DESC])
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
+        $works=$query_w->orderBy(['date' => SORT_ASC])
+            ->offset($pagination_w->offset)
+            ->limit($pagination_w->limit)
+            ->all();
 
         return $this->render('index',[
             'posts' => $posts,
+            'works' => $works,
             'active_page' => Yii::$app->request->get("page", 1),
             'count_pages' => $pagination -> getPageCount(),
             'pagination' => $pagination
@@ -89,7 +99,7 @@ class SiteController extends Controller
     public function actionWorks(){
         $query=Works::find()->where(['active' => 1]);
         $pagination = new Pagination([
-            'defaultPageSize'=>6,
+            'defaultPageSize'=>4,
             'totalCount' => $query -> count()
         ]);
         $works=$query->orderBy(['date' => SORT_ASC])

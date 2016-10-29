@@ -1,5 +1,5 @@
 
-<figure class="grid col-one-third mq1-col-one-half mq2-col-one-third mq3-col-full <?=$work->type;?>">
+<figure class="grid col-one-quarter mq2-col-one-half">
     <a href="<?= $work->link?>" >
         <img class="img-responsive" src="<?=$work->img?>" alt="<?=$work->address?>" >
         <span class="zoom"></span>
