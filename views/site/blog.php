@@ -6,31 +6,29 @@
  * Time: 19:47
  */
 use yii\widgets\LinkPager;
-$this->title="Мой сайт";
+$this->title="Мой блог";
 $this->registerMetaTag([
     'name' => 'description',
-    'content' => 'Мой личный сайт'
+    'content' => 'Мой личный Блог'
 ]);
 $this->registerMetaTag([
     'name' => 'keywords',
-    'content' => 'Нурсултан Мусабаев, личный сайт'
+    'content' => 'Нурсултан Мусабаев, личный блог'
 ])
 ?>
 
-<div class="works-page main grid-wrap">
+<div class="blog-page main grid-wrap">
 
     <header class="grid col-full">
         <hr>
-        <p class="fleft">Статьи про программирование</p>
+        <p class="fleft">Блог</p>
     </header>
-<section class="grid col-three-quarters mq2-col-full">
+    <section class="grid col-three-quarters mq2-col-two-thirds mq3-col-full">
 
-    <div class="grid-wrap works">
-        <?php foreach($posts as $post) include 'intro_post.php'?>
+            <?php foreach($blog_posts as $blog_post) include 'intro_blog_post.php'?>
 
-    </div> <!-- grid inside 3/4-->
 
-</section>
+    </section>
 
     <aside class="grid col-one-quarter mq2-col-one-third mq3-col-full blog-sidebar">
 
@@ -39,7 +37,7 @@ $this->registerMetaTag([
         </div>
 
         <div class="widget">
-            <p>Здесь будут раздел шуток как в Тпрогере</p>
+            <p>Здесь будут афоризмы</p>
         </div>
 
         <div class="widget">

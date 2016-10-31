@@ -2,35 +2,48 @@
 /**
  * Created by PhpStorm.
  * User: HomeO
- * Date: 30.10.2016
- * Time: 19:47
+ * Date: 31.10.2016
+ * Time: 22:41
  */
+
 use yii\widgets\LinkPager;
-$this->title="Мой сайт";
+$this->title=$blog_post->title;
 $this->registerMetaTag([
     'name' => 'description',
-    'content' => 'Мой личный сайт'
+    'content' => $blog_post->meta_desc
 ]);
 $this->registerMetaTag([
     'name' => 'keywords',
-    'content' => 'Нурсултан Мусабаев, личный сайт'
+    'content' => $blog_post->meta_key
 ])
 ?>
 
-<div class="works-page main grid-wrap">
+<div class="blogpost-page main grid-wrap">
 
     <header class="grid col-full">
         <hr>
         <p class="fleft">Статьи про программирование</p>
     </header>
-<section class="grid col-three-quarters mq2-col-full">
+    <div class="entry-image">
+<!--        --><?//=$blog_post->image?>
+    </div>
 
-    <div class="grid-wrap works">
-        <?php foreach($posts as $post) include 'intro_post.php'?>
 
-    </div> <!-- grid inside 3/4-->
+    <section class="grid col-three-quarters mq2-col-two-thirds mq3-col-full">
 
-</section>
+        <article class="post post-single">
+            <h2><a href="#" class="post-title"><?=$blog_post->title?></a></h2>
+            <div class="meta">
+                <p>Запостено <span class="time"><?=$blog_post->date?></span> &nbsp &nbsp<a href="#"class="cat"><?=$blog_post->category?></a> &nbsp;&nbsp; <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span><?=$blog_post->hits?></span>.</p>
+            </div>
+            <div class="entry">
+                <?=$blog_post->full_text?>
+            </div>
+
+        </article>
+
+
+    </section>
 
     <aside class="grid col-one-quarter mq2-col-one-third mq3-col-full blog-sidebar">
 
@@ -71,4 +84,7 @@ $this->registerMetaTag([
             </ul>
         </div>
     </aside>
-</div>
+
+
+</div> <!--main-->
+

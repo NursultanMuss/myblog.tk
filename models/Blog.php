@@ -2,20 +2,22 @@
 /**
  * Created by PhpStorm.
  * User: HomeO
- * Date: 22.10.2016
- * Time: 14:57
+ * Date: 31.10.2016
+ * Time: 20:23
  */
+
 namespace app\models;
 
 use yii\db\ActiveRecord;
 use Yii;
 
-class Programming extends ActiveRecord{
-    
+class Blog extends ActiveRecord{
+    public $number;
     public $link;
     public $video;
-    public $number;
-    public function afterFind() {
+
+    public function afterFind()
+    {
         $monthes = [
             1 => 'Января', 2=> 'Февраля', 3 => 'Марта', 4 => 'Апреля', 5 => 'Мая', 6 => 'Июня',
             7 => 'Июля', 8 => 'Августа', 9 => 'Сентября', 10 => 'Октября', 11 => 'Ноября', 12 => 'Декабря'
@@ -23,19 +25,17 @@ class Programming extends ActiveRecord{
 
         $this->date = date('j ', $this->date).$monthes[date('n', $this->date)].date(', Y', $this->date);
         $this->full_text = $this->replaceContent($this->full_text);
+        $this->intro_text = $this->replaceContent($this->intro_text);
 
 
-        $this->link = Yii::$app->urlManager->createUrl(["site/prog_post", "id" => $this->id]);
+        $this->link = Yii::$app->urlManager->createUrl(["site/blog_post", "id" => $this->id]);
         $this->video = $this->youtube("{youtube:".$this->video.",480,295}");
-
     }
 
-     public function replaceContent ($text) {
-         $text = $this->youtube($text);
-         return $text;
-     }
-
-
+    public function replaceContent ($text){
+        $text = $this->youtube($text);
+        return $text;
+    }
 
     private function youtube($text){
         if (strpos($text, "youtube") === false) return $text;
@@ -47,7 +47,7 @@ class Programming extends ActiveRecord{
     }
 
     public static function setNumbers($posts){
-        $all_releases= Programming::find()->where(['is_release' => 1])->orderBy("date")->all();
+        $all_releases= Blog::find()->where(['hide' => 0])->orderBy("date")->all();
         $number =1;
         foreach($all_releases as $release){
             foreach ($posts as $post){
@@ -56,5 +56,6 @@ class Programming extends ActiveRecord{
             $number++;
         }
     }
-    
+
 }
+

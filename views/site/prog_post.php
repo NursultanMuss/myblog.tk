@@ -23,9 +23,7 @@ $this->registerMetaTag([
         <hr>
         <p class="fleft">Статьи про программирование</p>
     </header>
-    <div class="entry-image">
-        <?=$post->entry_image?>
-    </div>
+
 
 
     <section class="grid col-three-quarters mq2-col-two-thirds mq3-col-full">
@@ -33,7 +31,10 @@ $this->registerMetaTag([
         <article class="post post-single">
             <h2><a href="#" class="post-title"><?=$post->title?></a></h2>
             <div class="meta">
-                <p>Опубликовано <span class="time"><?=$post->date?></span> мной с ресурса <a href="<?=$post->res_link?>" class="fn"><?=$post->resource?></a> <span class="glyphicon glyphicon-eye-open"></span><span><?=$post->hits?></span>.</p>
+                <p>Опубликовано <span class="time"><?=$post->date?></span> мной с ресурса <a href="<?=$post->res_link?>" class="fn"><?=$post->resource?></a> &nbsp; <span class="glyphicon glyphicon-eye-open"></span><span><?=$post->hits?></span>.</p>
+            </div>
+            <div class="entry-image">
+                <?=$post->entry_image?>
             </div>
             <div class="entry">
                 <?=$post->full_text?>

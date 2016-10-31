@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Programming;
 use app\models\Works;
+use app\models\Blog;
 use Yii;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
@@ -131,8 +132,26 @@ class SiteController extends Controller
             'pagination' => $pagination
         ]);
     }
+    public function actionBlog (){
+        $query_p=Blog::find()->where(['hide' => 0]);
+        $pagination =new PAgination([
+            'defaultPageSize'=> 5,
+            'totalCount' => $query_p -> count()
+        ]);
 
-    public function actionPost(){
+        $blog_posts= $query_p->orderBy(['date' => SORT_DESC])
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+
+        return $this->render('blog',[
+            'blog_posts' => $blog_posts,
+            'active_page' => Yii::$app->request->get('page',1),
+            'count_pages' => $pagination ->getPageCount(),
+            'pagination' => $pagination
+        ]);
+    }
+    public function actionProg_post(){
         $post =Programming::find()->where(['id' => Yii::$app->getRequest()->getQueryParam('id')])->one();
         Programming::setNumbers([$post]);
         return $this->render('prog_post', [
@@ -142,11 +161,25 @@ class SiteController extends Controller
 
     public function actionWork(){
         $work=Works::find()->where(['id' => Yii::$app->getRequest()->getQueryParam('id')])->one();
-        Works::setNumber([$post]);
+        Works::setNumber($work);
         return $this->render('work', [
             'work' => $work
         ]);
     }
+    public function actionBlog_post (){
+        $blog_post=Blog::find()->where(['id' => Yii::$app->getRequest()->getQueryParams('id')])->one();
+        Blog::setNumbers($blog_post);
+        return $this->render('blog_post',[
+            'blog_post' => $blog_post
+        ]);
+    }
+
+    public function actionContacts (){
+        return $this->render('contacts');
+    }
+
+
+
 
         
 }
