@@ -22,6 +22,11 @@ $action = Yii::$app->controller->action->id;
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <link rel="shortcut icon" href="/web/favicon.ico" type='image/x-icon' />
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?136"></script>
+
+    <script type="text/javascript">
+        VK.init({apiId: 5695735, onlyWidgets: true});
+    </script>
 </head>
 <body>
 <?php $this->beginBody() ?>

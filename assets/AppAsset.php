@@ -23,7 +23,8 @@ class AppAsset extends AssetBundle
     public $js = [
         'js/jquery.flexslider-min.js',
         'js/scripts.js',
-        'http://code.jquery.com/jquery.min.js'
+        'http://code.jquery.com/jquery.min.js',
+        '//vk.com/js/api/openapi.js?63'
     ];
     public $depends = [
         'yii\web\YiiAsset',

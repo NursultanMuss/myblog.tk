@@ -1,4 +1,4 @@
-<article class="grid col-one-third mq3-col-full">
+<article class="grid col-one-third mq3-col-full main-page-art">
     <aside><?php if ($post->is_release) {?>Выпуск №<?=$post->id?> <?php }?>
         <ul class="post-info">
             <li><span class="glyphicon glyphicon-time"></span><time><?=$post->date?></time></li>
@@ -7,7 +7,7 @@
         </ul>
     </aside>
     <h5><?=$post->title?></h5>
-    <img class="img-responsive" src="<?=$post->img?>" alt="<?=$post->title?>">
+    <?=$post->entry_image?>
 
     <p class="more">
         <a href="<?= $post->link?>">Читать полностью</a>

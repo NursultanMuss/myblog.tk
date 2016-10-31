@@ -99,7 +99,7 @@ class SiteController extends Controller
     public function actionWorks(){
         $query=Works::find()->where(['active' => 1]);
         $pagination = new Pagination([
-            'defaultPageSize'=>4,
+            'defaultPageSize'=>5,
             'totalCount' => $query -> count()
         ]);
         $works=$query->orderBy(['date' => SORT_ASC])
@@ -111,6 +111,40 @@ class SiteController extends Controller
             'active_page' => Yii::$app->request->get("page", 1),
             'count_pages' => $pagination ->getPageCount(),
             'pagination' => $pagination
+        ]);
+    }
+
+    public function actionProgramming(){
+        $query = Programming::find()->where(['hide' => 0]);
+        $pagination = new Pagination([
+            'defaultPageSize'=> 9,
+            'totalCount' => $query -> count()
+        ]);
+        $posts=$query->orderBy(['date' => SORT_DESC])
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        return $this->render('programmings',[
+            'posts' => $posts,
+            'active_page' => Yii::$app->request->get('page',1),
+            'count_pages' => $pagination ->getPageCount(),
+            'pagination' => $pagination
+        ]);
+    }
+
+    public function actionPost(){
+        $post =Programming::find()->where(['id' => Yii::$app->getRequest()->getQueryParam('id')])->one();
+        Programming::setNumbers([$post]);
+        return $this->render('prog_post', [
+            'post' => $post
+        ]);
+    }
+
+    public function actionWork(){
+        $work=Works::find()->where(['id' => Yii::$app->getRequest()->getQueryParam('id')])->one();
+        Works::setNumber([$post]);
+        return $this->render('work', [
+            'work' => $work
         ]);
     }
 

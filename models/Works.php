@@ -46,5 +46,15 @@ class Works extends ActiveRecord{
 
         return $text;
     }
+    public static function setNumber($posts){
+        $all_releases= Works::find()->where(['active' => 1])->orderBy("date")->all();
+        $number =1;
+        foreach($all_releases as $release){
+            foreach ($posts as $post){
+                if($post->id == $release->id) $post->number = $number;
+            }
+            $number++;
+        }
+    }
     
 }

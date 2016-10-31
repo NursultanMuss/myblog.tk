@@ -29,6 +29,7 @@ $this->registerMetaTag([
                 </p>
                 <p>Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum.
                 </p>
+                <?=include "likes.php"?>
             </div>
 
 
@@ -68,14 +69,13 @@ $this->registerMetaTag([
     <header class="grid col-full">
         <hr>
         <p class="fleft">Статьи про программирование</p>
-        <a href="services.html" class="arrow fright">больше статей</a>
+        <a href="<?= Yii::$app->urlManager->createUrl(["site/programming"])?>" class="arrow fright">больше статей</a>
     </header>
-    <div class="articles">
         <?php
 
         foreach ($posts as $post){include  "intro_post.php";}
         ?>
-    </div>
+
 
 
 </section>
@@ -95,7 +95,7 @@ $this->registerMetaTag([
     <header class="grid col-full">
         <hr>
         <p class="fleft">Мои работы</p>
-        <a href="works.html" class="arrow fright">больше работ</a>
+        <a href="<?=Yii::$app->urlManager->createUrl(["site/works"])?>" class="arrow fright">больше работ</a>
     </header>
 <div class="works">
     <?php foreach($works as $work) {include "intro_work.php";}?>

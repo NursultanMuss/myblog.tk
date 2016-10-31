@@ -14,6 +14,7 @@ class Programming extends ActiveRecord{
     
     public $link;
     public $video;
+    public $number;
     public function afterFind() {
         $monthes = [
             1 => 'Января', 2=> 'Февраля', 3 => 'Марта', 4 => 'Апреля', 5 => 'Мая', 6 => 'Июня',
@@ -21,12 +22,10 @@ class Programming extends ActiveRecord{
         ];
 
         $this->date = date('j ', $this->date).$monthes[date('n', $this->date)].date(', Y', $this->date);
-        $this->intro_text = $this->replaceContent($this->intro_text);
         $this->full_text = $this->replaceContent($this->full_text);
 
 
         $this->link = Yii::$app->urlManager->createUrl(["site/post", "id" => $this->id]);
-        $this->img= '/web/img/programming/'.$this->img;
         $this->video = $this->youtube("{youtube:".$this->video.",480,295}");
 
     }
@@ -45,6 +44,17 @@ class Programming extends ActiveRecord{
         $text=preg_replace($reg, str_replace(array("%name%", "%width%", "%height%"), array("\\1", "\\2", "\\3"), file_get_contents(Yii::$app->basePath.Yii::$app->params["dir_tmpl"]."youtube.tpl")), $text);
 
         return $text;
+    }
+
+    public static function setNumbers($posts){
+        $all_releases= Programming::find()->where(['is_release' => 1])->orderBy("date")->all();
+        $number =1;
+        foreach($all_releases as $release){
+            foreach ($posts as $post){
+                if($post->id == $release->id) $post->number = $number;
+            }
+            $number++;
+        }
     }
     
 }
