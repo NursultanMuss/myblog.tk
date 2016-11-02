@@ -8,6 +8,8 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\components\PopularPosts_Prog;
+use app\components\PopularPosts_Blog;
 
 AppAsset::register($this);
 $action = Yii::$app->controller->action->id;
@@ -54,9 +56,54 @@ $action = Yii::$app->controller->action->id;
             </ul>
         </nav>
     </header>
-
+    
+    <div class="<?php echo $action;?>-page main grid-wrap">
 <?=$content?>
+        <?php
+        $actionList =['programming', 'blog', 'prog_post', 'blog_post'];
+        foreach ($actionList as $action1){
+            if($action == $action1){?>
+                <aside class="grid col-one-quarter mq2-col-one-third mq3-col-full blog-sidebar">
 
+                    <div class="widget">
+                        <input id="search" type="search" name="search" value="Type and hit enter to search" >
+                    </div>
+
+                    <div class="widget">
+                        <h2>Популярные статьи</h2>
+                        <?php if ($action == "prog_post") {$post_id =Yii::$app->getRequest()->getQueryParam('id');}
+                        else {$post_id=null;}?>
+                        <?php
+                        if ($action == "prog_post" || $action == "programming"){
+                            PopularPosts_Prog::widget(['id' => $post_id]);
+                        }else PopularPosts_Blog::widget(['id' => $post_id]);
+                        ?>
+                    </div>
+
+                    <div class="widget">
+                        <h2>Categories</h2>
+                        <ul>
+                            <li><a href="http://">Design (99+)</a></li>
+                            <li><a href="http://">Web (53)</a></li>
+                            <li><a href="http://">Other (12)</a></li>
+                            <li><a href="http://">Weird (4)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="widget">
+                        <h2>Meta</h2>
+                        <ul>
+                            <li><a href="">Entries (RSS)</a></li>
+                            <li><a href="">Comments (RSS)</a></li>
+                        </ul>
+                    </div>
+                </aside>
+                <?php
+            }
+        }
+        ?>
+
+    </div>
     <div class="divide-top">
         <footer class="grid-wrap">
             <ul class="grid col-one-third social">

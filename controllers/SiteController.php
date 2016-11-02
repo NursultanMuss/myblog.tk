@@ -134,7 +134,7 @@ class SiteController extends Controller
     }
     public function actionBlog (){
         $query_p=Blog::find()->where(['hide' => 0]);
-        $pagination =new PAgination([
+        $pagination =new Pagination([
             'defaultPageSize'=> 5,
             'totalCount' => $query_p -> count()
         ]);
@@ -175,7 +175,10 @@ class SiteController extends Controller
     }
 
     public function actionContacts (){
-        return $this->render('contacts');
+        $form = new ContactForm();
+        return $this->render('contacts',[
+            'form'
+        ]);
     }
 
 

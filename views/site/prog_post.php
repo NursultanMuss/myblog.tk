@@ -6,6 +6,7 @@
  * Time: 9:45
  */
 use yii\widgets\LinkPager;
+use app\components\PopularPosts;
 $this->title=$post->title;
 $this->registerMetaTag([
     'name' => 'description',
@@ -17,7 +18,7 @@ $this->registerMetaTag([
 ])
 ?>
 
-<div class="blogpost-page main grid-wrap">
+
 
     <header class="grid col-full">
         <hr>
@@ -45,41 +46,6 @@ $this->registerMetaTag([
 
     </section>
 
-    <aside class="grid col-one-quarter mq2-col-one-third mq3-col-full blog-sidebar">
+    
 
-        <div class="widget">
-            <input id="search" type="search" name="search" value="Type and hit enter to search" >
-        </div>
-
-        <div class="widget">
-            <h2>Popular Posts</h2>
-            <ul>
-                <li><a href="#" title="">Nullam porttitor elementum ligula</a></li>
-                <li><a href="#" title="">Vestibulum interdum</a></li>
-                <li><a href="#" title="">Quisque venenatis ante sit amet dolor</a></li>
-                <li><a href="#" title="">Aliquam adipiscing libero vitae leo</a></li>
-                <li><a href="#" title="">Sed accumsan quam ac tellus</a></li>
-            </ul>
-        </div>
-
-        <div class="widget">
-            <h2>Categories</h2>
-            <ul>
-                <li><a href="http://">Design (99+)</a></li>
-                <li><a href="http://">Web (53)</a></li>
-                <li><a href="http://">Other (12)</a></li>
-                <li><a href="http://">Weird (4)</a></li>
-            </ul>
-        </div>
-
-        <div class="widget">
-            <h2>Meta</h2>
-            <ul>
-                <li><a href="">Entries (RSS)</a></li>
-                <li><a href="">Comments (RSS)</a></li>
-            </ul>
-        </div>
-    </aside>
-
-
-</div> <!--main-->
+<!--main-->

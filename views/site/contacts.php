@@ -6,6 +6,7 @@
  * Time: 22:54
  */
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 $this->title="Общение";
 $this->registerMetaTag([
@@ -56,6 +57,7 @@ $this->registerMetaTag([
     </aside>
 
     <section class="grid col-three-quarters mq2-col-two-thirds mq3-col-full">
+        <?php $f=ActiveForm::begin()?>
         <h2>Drop us a message</h2>
         <p class="warning">Don't forget to put your own email address in the php file!</p>
 
@@ -78,6 +80,7 @@ $this->registerMetaTag([
                 </li>
             </ul>
         </form>
+        <?php ActiveForm::end();?>
     </section>
 
 </div> <!--main-->
