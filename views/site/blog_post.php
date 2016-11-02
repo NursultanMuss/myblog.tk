@@ -44,48 +44,7 @@ $this->registerMetaTag([
 
 
     </section>
-<aside class="grid col-one-quarter mq2-col-one-third mq3-col-full blog-sidebar">
 
-    <div class="widget">
-        <input id="search" type="search" name="search" value="Type and hit enter to search" >
-    </div>
-
-    <div class="widget">
-        <h2>Популярные статьи</h2>
-        <?php if ($action == "prog_post" ||$action =="blog_post") {$post_id =Yii::$app->getRequest()->getQueryParam('id');}
-        else {$post_id=null;}
-        if ($action == 'programming' || $action== 'prog_post'){
-            $posts=Programming::find()->where(['hide' => 0])->limit(5)->where(['not' , ['id' => $this->id]])->orderBy(['hits' => SORT_DESC])->all();
-        }else  {$posts=Blog::find()->where(['hide' => 0])->limit(5)->where(['not' , ['id' => $this->id]])->orderBy(['hits', SORT_DESC])->all();}
-
-
-        foreach($posts as $post){
-            $a=Html::tag('a', $post->title, ['href' => $post->link]);
-            $li= Html::tag('li',$a);
-        }
-        return HTML::tag('ul', $li, ['id'=> 'popular_post']);
-
-        ?>
-    </div>
-
-    <div class="widget">
-        <h2>Categories</h2>
-        <ul>
-            <li><a href="http://">Design (99+)</a></li>
-            <li><a href="http://">Web (53)</a></li>
-            <li><a href="http://">Other (12)</a></li>
-            <li><a href="http://">Weird (4)</a></li>
-        </ul>
-    </div>
-
-    <div class="widget">
-        <h2>Meta</h2>
-        <ul>
-            <li><a href="">Entries (RSS)</a></li>
-            <li><a href="">Comments (RSS)</a></li>
-        </ul>
-    </div>
-</aside>
 
 
 

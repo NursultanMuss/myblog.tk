@@ -121,12 +121,12 @@ class SiteController extends Controller
             'defaultPageSize'=> 9,
             'totalCount' => $query -> count()
         ]);
-        $posts=$query->orderBy(['date' => SORT_DESC])
+        $prog_posts=$query->orderBy(['date' => SORT_DESC])
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
         return $this->render('programmings',[
-            'posts' => $posts,
+            'prog_posts' => $prog_posts,
             'active_page' => Yii::$app->request->get('page',1),
             'count_pages' => $pagination ->getPageCount(),
             'pagination' => $pagination
@@ -152,10 +152,10 @@ class SiteController extends Controller
         ]);
     }
     public function actionProg_post(){
-        $post =Programming::find()->where(['id' => Yii::$app->getRequest()->getQueryParam('id')])->one();
-        Programming::setNumbers([$post]);
+        $prog_post =Programming::find()->where(['id' => Yii::$app->getRequest()->getQueryParam('id')])->one();
+        Programming::setNumbers([$prog_post]);
         return $this->render('prog_post', [
-            'post' => $post
+            'prog_post' => $prog_post
         ]);
     }
 

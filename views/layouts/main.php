@@ -66,17 +66,20 @@ $action = Yii::$app->controller->action->id;
                 <aside class="grid col-one-quarter mq2-col-one-third mq3-col-full blog-sidebar">
 
                     <div class="widget">
-                        <input id="search" type="search" name="search" value="Type and hit enter to search" >
+                        <input id="search" type="search" name="search" value="Найти" >
                     </div>
 
                     <div class="widget">
                         <h2>Популярные статьи</h2>
-                        <?php if ($action == "prog_post") {$post_id =Yii::$app->getRequest()->getQueryParam('id');}
-                        else {$post_id=null;}?>
                         <?php
                         if ($action == "prog_post" || $action == "programming"){
+                            if ($action == "prog_post") {$post_id =Yii::$app->getRequest()->getQueryParam('id');}
+                            else {$post_id=null;}
                             PopularPosts_Prog::widget(['id' => $post_id]);
-                        }else PopularPosts_Blog::widget(['id' => $post_id]);
+                        }else {
+                            if ($action == "blog_post") {$post_id =Yii::$app->getRequest()->getQueryParam('id');}
+                            else {$post_id=null;}
+                           echo PopularPosts_Blog::widget(['id' => $post_id]);}
                         ?>
                     </div>
 
