@@ -93,10 +93,29 @@ class SiteController extends Controller
             'pagination' => $pagination
         ]);
     }
+    /* -------------------------------------------------------------
+    ======	PAGES
+    ------------------------------------------------------------- */
+
+    /* -- ABOUT   CONTACTS
+    ------------------------------------------------------------- */
 
     public function actionAbout(){
         return $this->render('about');
     }
+    public function actionContacts (){
+        $form = new ContactForm();
+        return $this->render('contacts',[
+            'form'
+        ]);
+    }
+
+    /* -------------------------------------------------------------
+======	PAGE
+------------------------------------------------------------- */
+
+    /* -- WORKS
+    ------------------------------------------------------------- */
     public function actionWorks(){
         $query=Works::find()->where(['active' => 1]);
         $pagination = new Pagination([
@@ -115,6 +134,21 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionWork(){
+        $work=Works::find()->where(['id' => Yii::$app->getRequest()->getQueryParam('id')])->one();
+        Works::setNumber($work);
+        return $this->render('work', [
+            'work' => $work
+        ]);
+    }
+
+    /* -------------------------------------------------------------
+======	PAGE
+------------------------------------------------------------- */
+
+    /* -- PROGRAMMING - POSTS
+    ------------------------------------------------------------- */
+
     public function actionProgramming(){
         $query = Programming::find()->where(['hide' => 0]);
         $pagination = new Pagination([
@@ -132,6 +166,29 @@ class SiteController extends Controller
             'pagination' => $pagination
         ]);
     }
+
+    public function actionProg_post(){
+        $prog_post =Programming::find()->where(['id' => Yii::$app->getRequest()->getQueryParam('id')])->one();
+        Programming::setNumbers([$prog_post]);
+        return $this->render('prog_post', [
+            'prog_post' => $prog_post
+        ]);
+    }
+
+    public function actionProg_category(){
+        $cat_post = Programming::find()->where(['category' => Yii::$app->getRequest()->getQueryParam('category')])->all();
+        return $this->render('prog_cat', [
+           'cat_post' => $cat_post
+        ]);
+    }
+
+    /* -------------------------------------------------------------
+======	PAGE
+------------------------------------------------------------- */
+
+    /* -- BLOG - POSTS
+    ------------------------------------------------------------- */
+
     public function actionBlog (){
         $query_p=Blog::find()->where(['hide' => 0]);
         $pagination =new Pagination([
@@ -151,21 +208,7 @@ class SiteController extends Controller
             'pagination' => $pagination
         ]);
     }
-    public function actionProg_post(){
-        $prog_post =Programming::find()->where(['id' => Yii::$app->getRequest()->getQueryParam('id')])->one();
-        Programming::setNumbers([$prog_post]);
-        return $this->render('prog_post', [
-            'prog_post' => $prog_post
-        ]);
-    }
 
-    public function actionWork(){
-        $work=Works::find()->where(['id' => Yii::$app->getRequest()->getQueryParam('id')])->one();
-        Works::setNumber($work);
-        return $this->render('work', [
-            'work' => $work
-        ]);
-    }
     public function actionBlog_post (){
         $blog_post=Blog::find()->where(['id' => Yii::$app->getRequest()->getQueryParams('id')])->one();
         Blog::setNumbers($blog_post);
@@ -173,13 +216,16 @@ class SiteController extends Controller
             'blog_post' => $blog_post
         ]);
     }
-
-    public function actionContacts (){
-        $form = new ContactForm();
-        return $this->render('contacts',[
-            'form'
+    
+    
+    public function actionBlog_category(){
+        $cat_post = Blog::find()->where(['category' => Yii::$app->getRequest()->getQueryParam('category')])->all();
+        return $this->render('blog_cat', [
+            'cat_post' => $cat_post
         ]);
     }
+
+
 
 
 
