@@ -10,6 +10,8 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\components\PopularPosts_Prog;
 use app\components\PopularPosts_Blog;
+use app\components\ProgCategory;
+use app\components\BlogCategory;
 
 AppAsset::register($this);
 $action = Yii::$app->controller->action->id;
@@ -75,7 +77,7 @@ $action = Yii::$app->controller->action->id;
                         if ($action == "prog_post" || $action == "programming"){
                             if ($action == "prog_post") {$post_id =Yii::$app->getRequest()->getQueryParam('id');}
                             else {$post_id=null;}
-                            PopularPosts_Prog::widget(['id' => $post_id]);
+                           echo PopularPosts_Prog::widget(['id' => $post_id]);
                         }else {
                             if ($action == "blog_post") {$post_id =Yii::$app->getRequest()->getQueryParam('id');}
                             else {$post_id=null;}
@@ -84,13 +86,12 @@ $action = Yii::$app->controller->action->id;
                     </div>
 
                     <div class="widget">
-                        <h2>Categories</h2>
-                        <ul>
-                            <li><a href="http://">Design (99+)</a></li>
-                            <li><a href="http://">Web (53)</a></li>
-                            <li><a href="http://">Other (12)</a></li>
-                            <li><a href="http://">Weird (4)</a></li>
-                        </ul>
+                        <h2>Категории</h2>
+                        <?php
+                        if($action == "prog_post" || $action == "programming"){
+                            echo ProgCategory::widget();
+                        }else echo BlogCategory::widget();
+                        ?>
                     </div>
 
                     <div class="widget">

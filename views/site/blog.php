@@ -25,8 +25,23 @@ $this->registerMetaTag([
     </header>
     <section class="grid col-three-quarters mq2-col-two-thirds mq3-col-full">
 
-            <?php foreach($blog_posts as $blog_post) include 'intro_blog_post.php'?>
+            <?php
+            $categories=[];
+            foreach ($blog_posts as $post){
+                $categories[$post->category]="0";
+            }
+
+            foreach ($blog_posts as $post){
+                foreach ($categories as $key =>$value){
+                    if($key==$post->category){
+                        $categories[$key]=++$value;
+                    };
+                }
+            }
+          
+            foreach($blog_posts as $blog_post) include 'intro_blog_post.php'?>
 
 
     </section>
+
 

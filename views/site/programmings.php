@@ -24,6 +24,7 @@ $this->registerMetaTag([
 <section class="grid col-three-quarters mq2-col-full">
 
     <div class="grid-wrap works">
+        
         <?php foreach($prog_posts as $post) include 'intro_post.php'?>
 
     </div> <!-- grid inside 3/4-->
