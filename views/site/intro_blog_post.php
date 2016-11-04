@@ -1,12 +1,12 @@
 <article class="post">
-    <h2><a href="<?=$blog_post->link?>" class="post-title"><?=$blog_post->title?></a></h2>
+    <h2><a href="<?=$post->link?>" class="post-title"><?=$post->title?></a></h2>
     <div class="meta">
-        <p>Запостено <span class="time"><?=$blog_post->date?></span> &nbsp &nbsp<a href="#"class="cat"><?=$blog_post->category?></a>.</p>
+        <p>Запостено <span class="time"><?=$post->date?></span> &nbsp &nbsp<a href="#"class="cat"><?=$post->category?></a>.</p>
     </div>
     <div class="entry">
-        <?=$blog_post->full_text?>
+        <?=$post->full_text?>
     </div>
     <footer>
-        <a href="<?=$blog_post->link?>" class="more-link">Читать дальше…</a>
+        <a href="<?=$post->link?>" class="more-link">Читать дальше…</a>
     </footer>
 </article>	

@@ -62,7 +62,7 @@ $action = Yii::$app->controller->action->id;
     <div class="<?php echo $action;?>-page main grid-wrap">
 <?=$content?>
         <?php
-        $actionList =['programming', 'blog', 'prog_post', 'blog_post'];
+        $actionList =['programming', 'blog', 'prog_post', 'blog_post','prog_category', 'blog_category'];
         foreach ($actionList as $action1){
             if($action == $action1){?>
                 <aside class="grid col-one-quarter mq2-col-one-third mq3-col-full blog-sidebar">
@@ -74,7 +74,7 @@ $action = Yii::$app->controller->action->id;
                     <div class="widget">
                         <h2>Популярные статьи</h2>
                         <?php
-                        if ($action == "prog_post" || $action == "programming"){
+                        if ($action == "prog_post" || $action == "programming" || $action == "prog_category"){
                             if ($action == "prog_post") {$post_id =Yii::$app->getRequest()->getQueryParam('id');}
                             else {$post_id=null;}
                            echo PopularPosts_Prog::widget(['id' => $post_id]);
@@ -88,7 +88,7 @@ $action = Yii::$app->controller->action->id;
                     <div class="widget">
                         <h2>Категории</h2>
                         <?php
-                        if($action == "prog_post" || $action == "programming"){
+                        if($action == "prog_post" || $action == "programming" || $action == "prog_category"){
                             echo ProgCategory::widget();
                         }else echo BlogCategory::widget();
                         ?>

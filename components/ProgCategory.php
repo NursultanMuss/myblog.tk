@@ -10,6 +10,7 @@ namespace app\components;
 use yii\base\widget;
 use yii\helpers\Html;
 use app\models\Programming;
+use Yii;
 
 class ProgCategory extends Widget{
     public function run(){
@@ -26,8 +27,8 @@ class ProgCategory extends Widget{
             }
         }
         $a1='';
-        foreach ($posts as $post){
-            $a=Html::tag('a', $post->category, ['href' => $post->link]);
+        foreach ($categories as $category => $amount){
+            $a=Html::tag('a', $category, ['href' => Yii::$app->urlManager->createUrl(['site/prog_category','category' => $category])]);
             $a1.=$a;
         }
 

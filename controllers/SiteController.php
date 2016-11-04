@@ -93,6 +93,21 @@ class SiteController extends Controller
             'pagination' => $pagination
         ]);
     }
+
+    public function actionLogin()
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->goBack();
+        }
+        return $this->render('login', [
+            'model' => $model,
+        ]);
+    }
     /* -------------------------------------------------------------
     ======	PAGES
     ------------------------------------------------------------- */
@@ -177,8 +192,10 @@ class SiteController extends Controller
 
     public function actionProg_category(){
         $cat_post = Programming::find()->where(['category' => Yii::$app->getRequest()->getQueryParam('category')])->all();
+        $category=Yii::$app->getRequest()->getQueryParam('category');
         return $this->render('prog_cat', [
-           'cat_post' => $cat_post
+           'cat_post' => $cat_post,
+            'category' => $category
         ]);
     }
 
@@ -221,7 +238,8 @@ class SiteController extends Controller
     public function actionBlog_category(){
         $cat_post = Blog::find()->where(['category' => Yii::$app->getRequest()->getQueryParam('category')])->all();
         return $this->render('blog_cat', [
-            'cat_post' => $cat_post
+            'cat_post' => $cat_post,
+            'category' => Yii::$app->getRequest()->getQueryParam('category')
         ]);
     }
 
