@@ -24,21 +24,27 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['login', 'logout', 'signup'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
                         'allow' => true,
+                        'actions' => ['login', 'signup'],
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['logout'],
                         'roles' => ['@'],
                     ],
+                    [
+                        'class' => AccessControl::className(),
+                        'denyCallback' => function ($rule, $action) {
+                            throw new \Exception('У вас нет доступа к этой странице');
+                        }
+                    ]
                 ],
             ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
+
         ];
     }
 
@@ -94,10 +100,15 @@ class SiteController extends Controller
         ]);
     }
 
+    /**
+     * Login action.
+     *
+     * @return string
+     */
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return Yii::$app->getResponse()->redirect(Yii::$app->urlManager->createUrl(['admin/index']));
         }
 
         $model = new LoginForm();
@@ -108,6 +119,19 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    /**
+     * Logout action.
+     *
+     * @return string
+     */
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+
+        return $this->goHome();
+    }
+
     /* -------------------------------------------------------------
     ======	PAGES
     ------------------------------------------------------------- */
@@ -242,6 +266,15 @@ class SiteController extends Controller
             'category' => Yii::$app->getRequest()->getQueryParam('category')
         ]);
     }
+
+    /* -------------------------------------------------------------
+======	PAGE
+------------------------------------------------------------- */
+
+    /* -- Admin-Panel
+    ------------------------------------------------------------- */
+    
+    
 
 
 

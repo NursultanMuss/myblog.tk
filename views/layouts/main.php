@@ -15,6 +15,8 @@ use app\components\BlogCategory;
 
 AppAsset::register($this);
 $action = Yii::$app->controller->action->id;
+
+$admin_actions = ['admin', 'admin_blog']
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
