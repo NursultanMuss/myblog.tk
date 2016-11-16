@@ -38,7 +38,7 @@ $this->registerMetaTag([
                     <div class="slides">
 <div class="slide">
     <figure>
-        <img class="img-responsive" src="img/img2.jpg" alt="">
+        <img class="img-responsive" src="/web/img/img2.jpg" alt="">
         <figcaption>
             <div>
                 <h5>Caption 1</h5>
@@ -50,7 +50,7 @@ $this->registerMetaTag([
 
 <div class="slide">
     <figure>
-        <img src="img/img.jpg" alt="">
+        <img src="/web/img/img.jpg" alt="">
         <figcaption>
             <div>
                 <h5>Caption 2</h5>
