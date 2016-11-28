@@ -30,9 +30,9 @@ $admin_actions = ['admin', 'admin_blog']
     <link rel="shortcut icon" href="/web/favicon.ico" type='image/x-icon' />
     <script type="text/javascript" src="//vk.com/js/api/openapi.js?136"></script>
 
-    <script type="text/javascript">
+<!--    <script type="text/javascript">
         VK.init({apiId: 5695735, onlyWidgets: true});
-    </script>
+    </script>-->
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -58,6 +58,8 @@ $admin_actions = ['admin', 'admin_blog']
                 <li><a href="<?=Yii::$app->urlManager->createUrl(["site/blog"])?>" <?php if ($action== "blog"){?>class="navactive"<?php }?>>Блог</a></li>
                 <li><a href="<?=Yii::$app->urlManager->createUrl(["site/contacts"])?>" <?php if ($action== "contacts"){?>class="navactive"<?php }?>>Контакты</a></li>
             </ul>
+
+            
         </nav>
     </header>
     
