@@ -4,9 +4,48 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "da2b00c1ae76bd6ef49af1c739815569",
-    "content-hash": "bd7de230808bb3e06fa34064e8a89217",
+    "hash": "41b8271896af18e04f7ce3ce3ad42fb9",
+    "content-hash": "93957e75ba3a338b59ed2facc814f988",
     "packages": [
+        {
+            "name": "bethrezen/yii2-cached-rbac-dbmanager",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bethrezen/yii2-cached-rbac-dbmanager.git",
+                "reference": "6b544c997d86bdec67879371bcedb79904b3aee5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bethrezen/yii2-cached-rbac-dbmanager/zipball/6b544c997d86bdec67879371bcedb79904b3aee5",
+                "reference": "6b544c997d86bdec67879371bcedb79904b3aee5",
+                "shasum": ""
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "bethrezen\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Kozhevnikov",
+                    "email": "b37hr3z3n@gmail.com"
+                }
+            ],
+            "description": "Allows caching of permissions in yii\\rbac\\DbManager ",
+            "keywords": [
+                "cache",
+                "dbmanager",
+                "rbac",
+                "yii2"
+            ],
+            "time": "2015-02-16 11:23:42"
+        },
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.3.7",
@@ -92,12 +131,12 @@
             "version": "3.2.7",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RobinHerbots/Inputmask.git",
+                "url": "https://github.com/RobinHerbots/jquery.inputmask.git",
                 "reference": "5a72c563b502b8e05958a524cdfffafe9987be38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/5a72c563b502b8e05958a524cdfffafe9987be38",
+                "url": "https://api.github.com/repos/RobinHerbots/jquery.inputmask/zipball/5a72c563b502b8e05958a524cdfffafe9987be38",
                 "reference": "5a72c563b502b8e05958a524cdfffafe9987be38",
                 "shasum": ""
             },
@@ -3045,7 +3084,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "bethrezen/yii2-cached-rbac-dbmanager": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
